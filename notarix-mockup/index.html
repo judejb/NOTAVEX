@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notavex Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="mark">N</div>
+      <div>
+        <strong>Notavex</strong>
+        <span>AI automation for notaries</span>
+      </div>
+    </div>
+    <nav>
+      <button class="nav active" data-view="office">NotaOffice</button>
+      <button class="nav nav-parent" id="toggleCommunicate" type="button" aria-expanded="true">Notavex Communicate</button>
+      <div class="nav-group" id="communicateGroup">
+        <button class="nav nav-child" data-view="voix">NotaVoix</button>
+        <button class="nav nav-child" data-view="mail">NotaMail</button>
+        <button class="nav nav-child" data-view="appointments">Appointments</button>
+      </div>
+      <button class="nav nav-parent" id="toggleTransaction" type="button" aria-expanded="true">Notavex Transaction</button>
+      <div class="nav-group" id="transactionGroup">
+        <button class="nav nav-child" data-view="rad">NotaRad</button>
+        <button class="nav nav-child" data-view="marriage">NotaMarriage</button>
+      </div>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Demo workspace</p>
+        <h1>Me Tremblay Notarial Office</h1>
+      </div>
+      <div class="status-pill">Bilingual AI workflows active</div>
+    </header>
+
+    <section class="view active" id="office">
+      <div class="metrics">
+        <article><span>Active matters</span><strong>42</strong></article>
+        <article><span>Missing documents</span><strong>11</strong></article>
+        <article><span>Appointments today</span><strong>8</strong></article>
+        <article><span>Urgent reviews</span><strong>3</strong></article>
+      </div>
+      <div class="grid two">
+        <section class="panel">
+          <h2>Priority Files</h2>
+          <div class="matter warning">
+            <strong>Dupuis purchase - 1842 Rue Saint-Denis</strong>
+            <span>Insurance confirmation missing. Closing in 2 days.</span>
+          </div>
+          <div class="matter success">
+            <strong>Lavoie quittance</strong>
+            <span>Radiation confirmed. ProCardex payment entry ready.</span>
+          </div>
+          <div class="matter">
+            <strong>Gagnon will appointment</strong>
+            <span>Client checklist sent. Awaiting ID upload.</span>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Today</h2>
+          <ul class="timeline">
+            <li><b>9:30</b> Mortgage signing - Nguyen</li>
+            <li><b>11:00</b> Will consultation - Martel</li>
+            <li><b>13:15</b> Review Rapport preliminaire - Dupuis</li>
+            <li><b>15:00</b> Staff review of AI email drafts</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="voix">
+      <div class="metrics">
+        <article><span>Calls today</span><strong>16</strong></article>
+        <article><span>Contacts captured</span><strong>11</strong></article>
+        <article><span>Converted to email</span><strong>5</strong></article>
+        <article><span>Succession billable</span><strong>3.25 h</strong></article>
+      </div>
+      <div class="voice-layout">
+        <section class="panel call-list-panel">
+          <div class="mail-list-head">
+            <h2>Call Log</h2>
+            <span>Name, number, and email captured</span>
+          </div>
+          <div class="call-scroll">
+            <div class="call-section-title">Incoming Calls</div>
+            <button class="call-row" data-call="realEstate">
+              <strong>Mariana Costa</strong>
+              <time>May 13, 2026 - 10:23</time>
+              <span>Incoming call - Real estate</span>
+              <em>Converted to email</em>
+            </button>
+            <button class="call-row" data-call="testament">
+              <strong>Claire Bouchard</strong>
+              <time>May 13, 2026 - 09:48</time>
+              <span>Incoming call - Testament & Mandate</span>
+              <em>Appointment booked</em>
+            </button>
+            <button class="call-row" data-call="consultation">
+              <strong>Robert Paquette</strong>
+              <time>May 12, 2026 - 14:02</time>
+              <span>Incoming call - Consultation juridique</span>
+              <em>Escalated</em>
+            </button>
+            <div class="call-section-title">Outgoing Calls</div>
+            <button class="call-row active" data-call="succession">
+              <strong>Amelie Roy</strong>
+              <time>May 13, 2026 - 10:51</time>
+              <span>Outgoing call - Succession</span>
+              <em>18 min - billed 0.50 h</em>
+            </button>
+            <button class="call-row" data-call="copies">
+              <strong>Julie Moreau</strong>
+              <time>May 12, 2026 - 16:10</time>
+              <span>Outgoing call - Certified copies</span>
+              <em>6 min - no bill</em>
+            </button>
+          </div>
+        </section>
+
+        <section class="panel call-detail-panel">
+          <div class="message-meta">
+            <div>
+              <p class="eyebrow">Call Transcript</p>
+              <h2 id="callTitle">Outgoing call - Succession</h2>
+            </div>
+            <span id="callBilling">18 min - billed 0.50 h</span>
+          </div>
+          <dl class="call-facts">
+            <dt>Client</dt><dd id="callClient">Amelie Roy</dd>
+            <dt>Number</dt><dd id="callNumber">514-555-0198</dd>
+            <dt>Email</dt><dd id="callEmail">amelie.roy@example.com</dd>
+            <dt>Time</dt><dd id="callTime">May 13, 2026 - 10:51</dd>
+            <dt>Direction</dt><dd id="callDirection">Outgoing</dd>
+          </dl>
+          <div class="transcript" id="callTranscript">
+            <p><b>NotaVoix:</b> Bonjour, suis-je bien avec Mme Amelie Roy?</p>
+            <p><b>Client:</b> Oui, c'est Amelie Roy.</p>
+            <p><b>NotaVoix:</b> Merci. Je confirme que ce numero est le 514-555-0198. Je vous appelle au sujet du dossier de succession de votre pere.</p>
+            <p><b>Summary:</b> Client identity confirmed, succession documents explained, follow-up email requested.</p>
+          </div>
+          <div class="actions">
+            <button id="convertCallEmail" type="button">Convert to email</button>
+            <button class="secondary" type="button">Attach to file</button>
+            <button class="secondary" type="button">Create task</button>
+          </div>
+          <div id="callEmailLink" class="send-status">Email draft ready: succession checklist for Amelie Roy.</div>
+        </section>
+      </div>
+
+      <div class="grid two">
+        <section class="panel">
+          <h2>Client Contacts</h2>
+          <table class="contacts-table">
+            <thead>
+              <tr><th>Name</th><th>Phone</th><th>Email</th><th>Source</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Amelie Roy</td><td>514-555-0198</td><td>amelie.roy@example.com</td><td>Succession call</td></tr>
+              <tr><td>Mariana Costa</td><td>+55 21 5555-0148</td><td>mariana.costa@example.com</td><td>WhatsApp + call</td></tr>
+              <tr><td>Claire Bouchard</td><td>438-555-0109</td><td>claire.bouchard@example.com</td><td>Testament call</td></tr>
+              <tr><td>Robert Paquette</td><td>450-555-0177</td><td>robert.paquette@example.com</td><td>Consultation call</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="panel">
+          <h2>Pickup Script</h2>
+          <div class="checklist">
+            <label><input type="checkbox" checked> Ask caller's full name before discussing the file</label>
+            <label><input type="checkbox" checked> Capture phone number shown at pickup</label>
+            <label><input type="checkbox" checked> Request and confirm email address for follow-up</label>
+            <label><input type="checkbox" checked> Confirm service category</label>
+            <label><input type="checkbox" checked> Log transcript and summary to contact record</label>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="mail">
+      <div class="mail-toolbar panel">
+        <div>
+          <p class="eyebrow">NotaMail</p>
+          <h2>Connected Mailbox</h2>
+          <span>Synced with Gmail: reception@metremblay.ca</span>
+        </div>
+        <div class="mail-actions">
+          <button type="button" id="composeMail">Compose</button>
+          <button class="secondary" type="button">Sync Gmail</button>
+        </div>
+      </div>
+
+      <div class="mailbox full">
+        <section class="panel mail-folders">
+          <button class="folder active" type="button">Unified Inbox <span>23</span></button>
+          <button class="folder channel" type="button">Email <span>18</span></button>
+          <button class="folder channel" type="button">WhatsApp <span>5</span></button>
+          <button class="folder" type="button">Sent <span>42</span></button>
+          <button class="folder" type="button">Drafts <span>7</span></button>
+          <button class="folder" type="button">Scheduled <span>5</span></button>
+          <button class="folder" type="button">Escalated <span>3</span></button>
+          <button class="folder" type="button">Archived</button>
+          <button class="category-toggle" type="button" id="toggleAiSections" aria-expanded="true">
+            <span>AI Sections</span>
+            <em>7</em>
+          </button>
+          <div class="category-group" id="aiSections">
+            <button class="folder category" type="button">Real estate <span>9</span></button>
+            <button class="folder category" type="button">Testament & Mandate <span>7</span></button>
+            <button class="folder category" type="button">Quittance / mainlevee <span>6</span></button>
+            <button class="folder category" type="button">Copies, declarations & invitations <span>5</span></button>
+            <button class="folder category" type="button">Marriage et Contrat de Marriage <span>3</span></button>
+            <button class="folder category" type="button">Consultation juridique <span>3</span></button>
+            <button class="folder category" type="button">Succession <span>4</span></button>
+          </div>
+          <div class="sync-note">Messages stay in Gmail and WhatsApp Business. Notavex manages replies, labels, scheduling, and client-file logs from one place.</div>
+        </section>
+
+        <section class="panel mail-list">
+          <div class="mail-list-head">
+            <h2>Inbox</h2>
+            <span>Last 5 shown</span>
+          </div>
+          <div class="email-scroll">
+            <button class="email active" data-email="appointment">
+              <strong>Sarah Pelletier</strong>
+              <time>May 13, 2026 - 10:42</time>
+              <span>Appointment request</span>
+              <em><b>Email</b> Auto reply ready</em>
+            </button>
+            <button class="email whatsapp" data-email="whatsappRealEstate">
+              <strong>Mariana Costa</strong>
+              <time>May 13, 2026 - 10:36</time>
+              <span>International real estate intake</span>
+              <em><b>WhatsApp</b> Reply ready</em>
+            </button>
+            <button class="email" data-email="documents">
+              <strong>Minh Nguyen</strong>
+              <time>May 13, 2026 - 10:18</time>
+              <span>Missing insurance proof</span>
+              <em><b>Email</b> Draft ready</em>
+            </button>
+            <button class="email whatsapp" data-email="whatsappInvitation">
+              <strong>Ahmed Benali</strong>
+              <time>May 13, 2026 - 10:04</time>
+              <span>Letter of invitation</span>
+              <em><b>WhatsApp</b> Requirements ready</em>
+            </button>
+            <button class="email" data-email="legal">
+              <strong>Elise Martel</strong>
+              <time>May 13, 2026 - 09:57</time>
+              <span>Question about servitude</span>
+              <em><b>Email</b> Escalate</em>
+            </button>
+            <button class="email" data-email="sent">
+              <strong>Me Tremblay</strong>
+              <time>May 13, 2026 - 09:31</time>
+              <span>Checklist sent to Marc Lavoie</span>
+              <em><b>Email</b> Sent via Gmail</em>
+            </button>
+            <button class="email" data-email="testament">
+              <strong>Claire Bouchard</strong>
+              <time>May 13, 2026 - 08:44</time>
+              <span>Testament & Mandate section</span>
+              <em><b>Email</b> Checklist prepared</em>
+            </button>
+            <button class="email older whatsapp" data-email="whatsappSuccession">
+              <strong>Sofia Pereira</strong>
+              <time>May 12, 2026 - 17:10</time>
+              <span>Succession from abroad</span>
+              <em><b>WhatsApp</b> Intake ready</em>
+            </button>
+            <button class="email older" data-email="mandate">
+              <strong>Andre Gagnon</strong>
+              <time>May 12, 2026 - 16:20</time>
+              <span>Testament & Mandate section</span>
+              <em>Draft ready</em>
+            </button>
+            <button class="email older" data-email="quittance">
+              <strong>Marc Lavoie</strong>
+              <time>May 12, 2026 - 13:47</time>
+              <span>Quittance/mainlevee follow-up</span>
+              <em>Status reply ready</em>
+            </button>
+            <button class="email older" data-email="certifiedCopies">
+              <strong>Julie Moreau</strong>
+              <time>May 12, 2026 - 11:33</time>
+              <span>Copies, declarations & invitations</span>
+              <em>Fee reply ready</em>
+            </button>
+            <button class="email older" data-email="swornDeclaration">
+              <strong>Karim Haddad</strong>
+              <time>May 12, 2026 - 10:05</time>
+              <span>Copies, declarations & invitations</span>
+              <em>Appointment reply ready</em>
+            </button>
+            <button class="email older" data-email="invitation">
+              <strong>Patricia Simard</strong>
+              <time>May 11, 2026 - 16:52</time>
+              <span>Copies, declarations & invitations</span>
+              <em>Requirements ready</em>
+            </button>
+            <button class="email older" data-email="marriage">
+              <strong>Laurence Cote</strong>
+              <time>May 11, 2026 - 15:38</time>
+              <span>Marriage et Contrat de Marriage</span>
+              <em>Intake ready</em>
+            </button>
+            <button class="email older" data-email="consultation">
+              <strong>Robert Paquette</strong>
+              <time>May 11, 2026 - 14:26</time>
+              <span>Consultation juridique</span>
+              <em>Escalate to notary</em>
+            </button>
+            <button class="email older" data-email="succession">
+              <strong>Amelie Roy</strong>
+              <time>May 11, 2026 - 09:12</time>
+              <span>Succession</span>
+              <em>Intake checklist ready</em>
+            </button>
+          </div>
+        </section>
+
+        <section class="panel mail-reader">
+          <div class="message-meta">
+            <div>
+              <p class="eyebrow">Message</p>
+              <h2 id="emailSubject">Appointment request</h2>
+            </div>
+            <span id="emailStatus">Auto reply ready</span>
+          </div>
+          <div class="message-card" id="emailMessage">
+            <p><b>From:</b> Sarah Pelletier &lt;sarah.pelletier@example.com&gt;</p>
+            <p>Bonjour, j'aimerais prendre rendez-vous pour ouvrir un dossier d'achat immobilier. Avez-vous des disponibilites cette semaine?</p>
+          </div>
+          <h2>Reply Composer</h2>
+          <div id="emailDraft" class="draft">
+            <p>Bonjour Mme Pelletier,</p>
+            <p>Merci pour votre message. Me Tremblay est disponible mardi a 10 h 30, mercredi a 14 h, ou jeudi a 9 h 15 pour votre rendez-vous de testament.</p>
+            <p>Veuillez confirmer la plage qui vous convient.</p>
+          </div>
+          <div class="actions">
+            <button id="sendMail" type="button">Send through Gmail</button>
+            <button class="secondary">Edit</button>
+            <button class="secondary">Schedule</button>
+          </div>
+          <div id="sendStatus" class="send-status">Ready to send from reception@metremblay.ca.</div>
+        </section>
+      </div>
+
+      <section class="panel compose-panel" id="composePanel">
+        <div class="message-meta">
+          <div>
+            <p class="eyebrow">New Email</p>
+            <h2>Compose in Notavex</h2>
+          </div>
+          <span>Will send through Gmail</span>
+        </div>
+        <form class="compose-form">
+          <label>To <input type="email" value="client@example.com"></label>
+          <label>Subject <input type="text" value="Documents requis pour votre rendez-vous"></label>
+          <label>Message <textarea>Bonjour, voici la liste des documents requis pour votre rendez-vous. Vous pouvez les transmettre par le lien securise ci-dessous.</textarea></label>
+          <div class="actions">
+            <button type="button" id="sendComposedMail">Send</button>
+            <button class="secondary" type="button" id="closeCompose">Close</button>
+          </div>
+        </form>
+      </section>
+    </section>
+
+    <section class="view" id="appointments">
+      <div class="metrics">
+        <article><span>Booked today</span><strong>8</strong></article>
+        <article><span>Confirmed</span><strong>6</strong></article>
+        <article><span>Waiting for documents</span><strong>4</strong></article>
+        <article><span>Open slots</span><strong>5</strong></article>
+      </div>
+      <div class="calendar-shell">
+        <section class="panel calendar-panel">
+          <div class="calendar-head">
+            <div>
+              <h2>Appointment Calendar</h2>
+              <span>Week of May 18, 2026</span>
+            </div>
+            <div class="calendar-controls">
+              <button class="secondary" type="button">Today</button>
+              <button class="secondary" type="button">Week</button>
+            </div>
+          </div>
+          <div class="calendar-grid">
+            <div class="time-col">
+              <span></span>
+              <span>09:00</span>
+              <span>10:00</span>
+              <span>11:00</span>
+              <span>12:00</span>
+              <span>13:00</span>
+              <span>14:00</span>
+              <span>15:00</span>
+            </div>
+            <div class="day-col">
+              <div class="day-head">Mon <strong>18</strong></div>
+              <button class="calendar-event confirmed" data-appointment="nguyen">
+                <time>09:30</time>
+                <strong>Mortgage signing</strong>
+                <span>Minh Nguyen</span>
+              </button>
+              <button class="calendar-event open" type="button">
+                <time>14:00</time>
+                <strong>Open slot</strong>
+                <span>45 min</span>
+              </button>
+            </div>
+            <div class="day-col">
+              <div class="day-head">Tue <strong>19</strong></div>
+              <button class="calendar-event warning" data-appointment="martel">
+                <time>11:00</time>
+                <strong>Will consultation</strong>
+                <span>Elise Martel</span>
+              </button>
+              <button class="calendar-event internal" data-appointment="dupuis">
+                <time>13:15</time>
+                <strong>Rapport review</strong>
+                <span>Dupuis purchase</span>
+              </button>
+            </div>
+            <div class="day-col today">
+              <div class="day-head">Wed <strong>20</strong></div>
+              <button class="calendar-event new selected" data-appointment="pelletier">
+                <time>14:00</time>
+                <strong>Real estate intake</strong>
+                <span>Sarah Pelletier</span>
+              </button>
+            </div>
+            <div class="day-col">
+              <div class="day-head">Thu <strong>21</strong></div>
+              <button class="calendar-event open" type="button">
+                <time>09:15</time>
+                <strong>Open slot</strong>
+                <span>60 min</span>
+              </button>
+              <button class="calendar-event confirmed" data-appointment="lavoie">
+                <time>15:30</time>
+                <strong>Quittance follow-up</strong>
+                <span>Marc Lavoie</span>
+              </button>
+            </div>
+            <div class="day-col">
+              <div class="day-head">Fri <strong>22</strong></div>
+              <button class="calendar-event open" type="button">
+                <time>11:30</time>
+                <strong>Open slot</strong>
+                <span>30 min</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel appointment-detail">
+          <p class="eyebrow">Appointment Details</p>
+          <h2 id="detailTitle">Real estate intake</h2>
+          <dl>
+            <dt>Client</dt><dd id="detailClient">Sarah Pelletier</dd>
+            <dt>Time</dt><dd id="detailTime">Wednesday, May 20 at 14:00</dd>
+            <dt>Status</dt><dd id="detailStatus">Tracked booking</dd>
+            <dt>Source</dt><dd id="detailSource">Booked by NotaMail</dd>
+            <dt>Documents</dt><dd id="detailDocs">Checklist sent, ID pending</dd>
+          </dl>
+          <div class="detail-actions">
+            <button type="button">Confirm</button>
+            <button class="secondary" type="button">Reschedule</button>
+          </div>
+          <h2>Book Appointment</h2>
+          <form class="booking-form">
+            <label>
+              Client
+              <input type="text" value="Sarah Pelletier">
+            </label>
+            <label>
+              Service
+              <select>
+                <option>Real estate purchase</option>
+                <option>Will consultation</option>
+                <option>Mandate of protection</option>
+                <option>Marriage contract</option>
+              </select>
+            </label>
+            <label>
+              Preferred language
+              <select>
+                <option>French</option>
+                <option>English</option>
+              </select>
+            </label>
+            <label>
+              Slot
+              <select>
+                <option>Thursday, 14:00</option>
+                <option>Friday, 09:15</option>
+                <option>Friday, 11:30</option>
+              </select>
+            </label>
+            <button type="button" id="bookAppointment">Book and send checklist</button>
+          </form>
+        </section>
+      </div>
+
+      <div class="grid two">
+        <section class="panel">
+          <h2>Available Slots</h2>
+          <div class="slot-grid">
+            <button class="slot">Thu 14:00</button>
+            <button class="slot">Fri 09:15</button>
+            <button class="slot">Fri 11:30</button>
+            <button class="slot">Mon 10:00</button>
+            <button class="slot">Mon 15:45</button>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Automation Tracking</h2>
+          <div class="checklist">
+            <label><input type="checkbox" checked> Calendar invite sent</label>
+            <label><input type="checkbox" checked> SMS confirmation queued</label>
+            <label><input type="checkbox" checked> Document checklist selected</label>
+            <label><input type="checkbox" checked> Reminder scheduled 5 business days before</label>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="rad">
+      <section class="panel wide">
+        <h2>Quittance / Mainlevee Workflow</h2>
+        <div class="steps">
+          <div class="step done">Mandate accepted</div>
+          <div class="step done">Certified statement received</div>
+          <div class="step done">Draft generated</div>
+          <div class="step done">Registry submitted</div>
+          <div class="step current">Index confirmation</div>
+          <div class="step">ProCardex payment</div>
+        </div>
+      </section>
+      <div class="grid two">
+        <section class="panel">
+          <h2>File Data</h2>
+          <dl>
+            <dt>Client</dt><dd>Marc Lavoie</dd>
+            <dt>Lot</dt><dd>2 345 991, Montreal</dd>
+            <dt>Creditor</dt><dd>Banque Nationale</dd>
+            <dt>Act</dt><dd>Quittance totale</dd>
+          </dl>
+        </section>
+        <section class="panel">
+          <h2>Compliance Gate</h2>
+          <div class="checklist">
+            <label><input type="checkbox" checked> Certificat de requisition received</label>
+            <label><input type="checkbox" checked> Inscription number captured</label>
+            <label><input type="checkbox"> Radiation visible on Index des immeubles</label>
+            <label><input type="checkbox"> Payment entry released</label>
+          </div>
+        </section>
+      </div>
+      <section class="panel wide">
+        <p class="eyebrow">NotaRad Subsection</p>
+        <h2>NotaRapport - Lender Report Automation</h2>
+        <table>
+          <thead>
+            <tr><th>Report</th><th>Status</th><th>Blocking Item</th><th>Next Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Rapport preliminaire</td><td>Ready for review</td><td>None</td><td>Notary signature</td></tr>
+            <tr><td>Insurance validation</td><td>Flagged</td><td>Lender clause missing</td><td>Request corrected proof</td></tr>
+            <tr><td>Rapport final</td><td>Pending</td><td>Publication number</td><td>Wait for registry confirmation</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section class="view" id="marriage">
+      <div class="metrics">
+        <article><span>Active marriage files</span><strong>12</strong></article>
+        <article><span>Contracts in draft</span><strong>5</strong></article>
+        <article><span>Ceremonies scheduled</span><strong>4</strong></article>
+        <article><span>Missing documents</span><strong>7</strong></article>
+      </div>
+      <section class="panel wide">
+        <p class="eyebrow">Notavex Transaction</p>
+        <h2>NotaMarriage</h2>
+        <div class="steps">
+          <div class="step done">Client intake</div>
+          <div class="step done">Identity verified</div>
+          <div class="step current">Contract draft</div>
+          <div class="step">Review meeting</div>
+          <div class="step">Marriage ceremony</div>
+          <div class="step">Archive file</div>
+        </div>
+      </section>
+      <div class="grid two">
+        <section class="panel">
+          <h2>Contracts</h2>
+          <div class="matter warning">
+            <strong>Cote / Tremblay marriage contract</strong>
+            <span>Draft ready. Financial disclosure checklist pending.</span>
+          </div>
+          <div class="matter">
+            <strong>Nguyen / Roy contract update</strong>
+            <span>Review meeting scheduled for Friday at 11:30.</span>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Marriage</h2>
+          <div class="matter success">
+            <strong>Laurence Cote ceremony</strong>
+            <span>Ceremony scheduled. IDs received for both future spouses.</span>
+          </div>
+          <div class="matter">
+            <strong>Benali / Simard inquiry</strong>
+            <span>Waiting for date, venue, and witness information.</span>
+          </div>
+        </section>
+      </div>
+      <section class="panel wide">
+        <h2>Required Information</h2>
+        <table>
+          <thead>
+            <tr><th>Workflow</th><th>Required Items</th><th>Status</th><th>Next Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Contracts</td><td>IDs, civil status, assets/debts summary, matrimonial regime instructions</td><td>Drafting</td><td>Send disclosure reminder</td></tr>
+            <tr><td>Marriage</td><td>IDs, birth details, ceremony date, witnesses, location</td><td>Scheduled</td><td>Confirm ceremony packet</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
