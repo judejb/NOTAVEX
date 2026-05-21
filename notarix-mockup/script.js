@@ -1,5 +1,18 @@
 const navButtons = document.querySelectorAll(".nav");
 const views = document.querySelectorAll(".view");
+const signinScreen = document.getElementById("signinScreen");
+const appShell = document.querySelectorAll(".app-shell");
+
+function showDemoApp() {
+  signinScreen.classList.add("hidden");
+  appShell.forEach((item) => {
+    item.hidden = false;
+  });
+}
+
+document.getElementById("signinButton").addEventListener("click", showDemoApp);
+document.getElementById("googleSignin").addEventListener("click", showDemoApp);
+document.getElementById("microsoftSignin").addEventListener("click", showDemoApp);
 
 navButtons.forEach((button) => {
   button.addEventListener("click", () => {

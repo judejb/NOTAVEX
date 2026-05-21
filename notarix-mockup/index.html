@@ -7,7 +7,41 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <aside class="sidebar">
+  <section class="signin-screen" id="signinScreen">
+    <div class="signin-panel">
+      <div class="brand signin-brand">
+        <div class="mark">N</div>
+        <div>
+          <strong>Notavex</strong>
+          <span>Secure notarial automation workspace</span>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Demo Sign In</p>
+        <h1>Welcome back</h1>
+        <p class="signin-copy">Access the Notavex demo workspace for Me Tremblay Notarial Office.</p>
+      </div>
+      <form class="signin-form">
+        <label>
+          Email
+          <input type="email" value="demo@notavex.ca">
+        </label>
+        <label>
+          Password
+          <input type="password" value="notavexdemo">
+        </label>
+        <button type="button" id="signinButton">Continue to demo</button>
+      </form>
+      <div class="signin-divider">or</div>
+      <div class="signin-sso">
+        <button class="secondary" type="button" id="googleSignin">Continue with Google</button>
+        <button class="secondary" type="button" id="microsoftSignin">Continue with Microsoft</button>
+      </div>
+      <p class="signin-note">Demo only. Real pilots should use Google Workspace or Microsoft 365 authentication with MFA.</p>
+    </div>
+  </section>
+
+  <aside class="sidebar app-shell" hidden>
     <div class="brand">
       <div class="mark">N</div>
       <div>
@@ -31,7 +65,7 @@
     </nav>
   </aside>
 
-  <main>
+  <main class="app-shell" hidden>
     <header class="topbar">
       <div>
         <p class="eyebrow">Demo workspace</p>

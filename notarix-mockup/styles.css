@@ -23,6 +23,82 @@ body {
   display: flex;
 }
 
+.signin-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #f4f7fb 0%, #e9fbf8 100%);
+}
+
+.signin-screen.hidden {
+  display: none;
+}
+
+.signin-panel {
+  width: min(460px, 100%);
+  display: grid;
+  gap: 22px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 24px 60px rgba(17, 24, 39, 0.12);
+}
+
+.signin-brand {
+  color: var(--ink);
+}
+
+.signin-brand span,
+.signin-copy,
+.signin-note {
+  color: var(--muted);
+}
+
+.signin-copy,
+.signin-note {
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+
+.signin-note {
+  font-size: 13px;
+  margin: 0;
+}
+
+.signin-form,
+.signin-sso {
+  display: grid;
+  gap: 12px;
+}
+
+.signin-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.signin-form input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: white;
+  font: inherit;
+  padding: 12px;
+}
+
+.signin-divider {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
 .sidebar {
   width: 270px;
   background: #111827;
