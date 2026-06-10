@@ -62,6 +62,38 @@ const callDetails = {
       <p><b>Summary:</b> Client identity confirmed, succession documents explained, follow-up email requested.</p>
     `
   },
+  successionSofia: {
+    title: "Outgoing call - Succession",
+    billing: "34 min - billed 0.75 h",
+    client: "Sofia Pereira",
+    number: "+351 91 555 0184",
+    contactEmail: "sofia.pereira@example.com",
+    time: "June 10, 2026 - 09:40",
+    direction: "Outgoing",
+    email: "Email draft ready: remote succession intake for Sofia Pereira.",
+    transcript: `
+      <p><b>NotaVoix:</b> Bonjour Mme Pereira, je vous appelle au sujet de la succession de Maria Pereira.</p>
+      <p><b>Client:</b> Oui, je suis au Portugal et je veux savoir comment envoyer les documents.</p>
+      <p><b>NotaVoix:</b> Merci. Je confirme votre courriel sofia.pereira@example.com et je vais vous envoyer le lien securise.</p>
+      <p><b>Summary:</b> Remote succession process explained, secure upload link requested, 34 minutes recorded and rounded to 0.75 h.</p>
+    `
+  },
+  successionEstate: {
+    title: "Outgoing call - Succession",
+    billing: "22 min - billed 0.50 h",
+    client: "Estate of Laurent Blais",
+    number: "514-555-0162",
+    contactEmail: "liquidator.blais@example.com",
+    time: "June 9, 2026 - 15:20",
+    direction: "Outgoing",
+    email: "Email draft ready: liquidator next-step summary.",
+    transcript: `
+      <p><b>NotaVoix:</b> Bonjour, je fais le suivi avec le liquidateur de la succession Laurent Blais.</p>
+      <p><b>Client:</b> Oui, je veux confirmer les prochaines etapes et les documents manquants.</p>
+      <p><b>NotaVoix:</b> Je vais resumer les elements requis par courriel et joindre la liste de verification.</p>
+      <p><b>Summary:</b> Liquidator follow-up completed, missing documents listed, 22 minutes recorded and rounded to 0.50 h.</p>
+    `
+  },
   realEstate: {
     title: "Incoming call - Real estate",
     billing: "9 min - no bill",
@@ -150,9 +182,136 @@ document.querySelectorAll(".call-row").forEach((button) => {
   });
 });
 
+function loadCallDetail(callKey) {
+  const call = callDetails[callKey];
+
+  document.getElementById("callTitle").textContent = call.title;
+  document.getElementById("callBilling").textContent = call.billing;
+  document.getElementById("callClient").textContent = call.client;
+  document.getElementById("callNumber").textContent = call.number;
+  document.getElementById("callEmail").textContent = call.contactEmail;
+  document.getElementById("callTime").textContent = call.time;
+  document.getElementById("callDirection").textContent = call.direction;
+  document.getElementById("callTranscript").innerHTML = call.transcript;
+  document.getElementById("callEmailLink").textContent = call.email;
+}
+
 document.getElementById("convertCallEmail").addEventListener("click", () => {
   const client = document.getElementById("callClient").textContent;
   document.getElementById("callEmailLink").textContent = `Linked email draft created for ${client} in NotaMail.`;
+});
+
+document.querySelectorAll(".billable-row").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".billable-row").forEach((item) => item.classList.remove("active"));
+    document.querySelectorAll(".call-row").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    loadCallDetail(button.dataset.call);
+  });
+});
+
+const clientFiles = {
+  amelie: {
+    name: "Amelie Roy",
+    status: "Open succession file",
+    phone: "514-555-0198",
+    email: "amelie.roy@example.com",
+    matter: "Succession - Estate of Jean Roy",
+    lastActivity: "Outgoing succession call converted to email",
+    activity: [
+      ["Jun 10", "Outgoing succession call logged and transcribed"],
+      ["Jun 10", "Follow-up email draft created"],
+      ["Jun 9", "Death certificate request added"]
+    ],
+    stored: ["Contact details", "Call transcripts", "Email drafts"],
+    records: [
+      ["Succession follow-up call", "Billable time", "0.50 h", "NotaVoix"],
+      ["Succession checklist", "Email draft", "Ready", "NotaMail"],
+      ["Estate intake", "Document request", "Pending client", "Client Portal"]
+    ]
+  },
+  mariana: {
+    name: "Mariana Costa",
+    status: "Open real estate intake",
+    phone: "+55 21 5555-0148",
+    email: "mariana.costa@example.com",
+    matter: "Real estate purchase - Montreal condo",
+    lastActivity: "WhatsApp message converted to secure-upload email",
+    activity: [
+      ["Jun 10", "International intake call logged"],
+      ["Jun 10", "WhatsApp reply prepared"],
+      ["Jun 10", "Secure upload link requested"]
+    ],
+    stored: ["Contact details", "WhatsApp messages", "Call transcript"],
+    records: [
+      ["International intake", "Call transcript", "Logged", "NotaVoix"],
+      ["Secure upload instructions", "Email draft", "Ready", "NotaMail"],
+      ["Purchase intake", "Matter file", "Open", "Client Portal"]
+    ]
+  },
+  claire: {
+    name: "Claire Bouchard",
+    status: "Appointment scheduled",
+    phone: "438-555-0109",
+    email: "claire.bouchard@example.com",
+    matter: "Testament & Mandate",
+    lastActivity: "Appointment booked and checklist queued",
+    activity: [
+      ["Jun 10", "NotaVoix call captured name, phone, and email"],
+      ["Jun 10", "Appointment added to calendar"],
+      ["Jun 10", "Checklist queued"]
+    ],
+    stored: ["Contact details", "Appointment", "Checklist"],
+    records: [
+      ["Will consultation", "Appointment", "Booked", "Appointments"],
+      ["Testament checklist", "Email draft", "Queued", "NotaMail"],
+      ["Call summary", "Transcript", "Stored", "NotaVoix"]
+    ]
+  },
+  marc: {
+    name: "Marc Lavoie",
+    status: "Quittance follow-up",
+    phone: "514-555-0144",
+    email: "marc.lavoie@example.com",
+    matter: "Quittance / mainlevee",
+    lastActivity: "Radiation confirmed, ProCardex payment entry ready",
+    activity: [
+      ["Jun 10", "Radiation confirmation captured"],
+      ["Jun 10", "Client status email prepared"],
+      ["Jun 9", "Registry follow-up completed"]
+    ],
+    stored: ["Contact details", "Registry status", "Email draft"],
+    records: [
+      ["Radiation confirmation", "Registry record", "Confirmed", "NotaRad"],
+      ["Client update", "Email draft", "Ready", "NotaMail"],
+      ["Payment entry", "Accounting task", "Ready", "NotaRad"]
+    ]
+  }
+};
+
+document.querySelectorAll(".client-row").forEach((button) => {
+  button.addEventListener("click", () => {
+    const client = clientFiles[button.dataset.client];
+
+    document.querySelectorAll(".client-row").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+
+    document.getElementById("clientName").textContent = client.name;
+    document.getElementById("clientStatus").textContent = client.status;
+    document.getElementById("clientPhone").textContent = client.phone;
+    document.getElementById("clientEmailDetail").textContent = client.email;
+    document.getElementById("clientMatter").textContent = client.matter;
+    document.getElementById("clientLastActivity").textContent = client.lastActivity;
+    document.getElementById("clientActivity").innerHTML = client.activity
+      .map(([date, item]) => `<li><b>${date}</b> ${item}</li>`)
+      .join("");
+    document.getElementById("clientStoredInfo").innerHTML = client.stored
+      .map((item) => `<label><input type="checkbox" checked> ${item}</label>`)
+      .join("");
+    document.getElementById("clientRecords").innerHTML = client.records
+      .map(([item, type, status, module]) => `<tr><td>${item}</td><td>${type}</td><td>${status}</td><td>${module}</td></tr>`)
+      .join("");
+  });
 });
 
 const emailDrafts = {

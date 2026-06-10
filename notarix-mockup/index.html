@@ -51,6 +51,7 @@
     </div>
     <nav>
       <button class="nav active" data-view="office">NotaOffice</button>
+      <button class="nav" data-view="clients">Client Portal</button>
       <button class="nav nav-parent" id="toggleCommunicate" type="button" aria-expanded="true">Notavex Communicate</button>
       <div class="nav-group" id="communicateGroup">
         <button class="nav nav-child" data-view="voix">NotaVoix</button>
@@ -78,7 +79,7 @@
       <div class="metrics">
         <article><span>Active matters</span><strong>42</strong></article>
         <article><span>Missing documents</span><strong>11</strong></article>
-        <article><span>Appointments today</span><strong>8</strong></article>
+        <article><span>Appointments on June 10, 2026</span><strong>8</strong></article>
         <article><span>Urgent reviews</span><strong>3</strong></article>
       </div>
       <div class="grid two">
@@ -98,13 +99,103 @@
           </div>
         </section>
         <section class="panel">
-          <h2>Today</h2>
+          <h2>Wednesday, June 10, 2026</h2>
           <ul class="timeline">
             <li><b>9:30</b> Mortgage signing - Nguyen</li>
             <li><b>11:00</b> Will consultation - Martel</li>
             <li><b>13:15</b> Review Rapport preliminaire - Dupuis</li>
             <li><b>15:00</b> Staff review of AI email drafts</li>
           </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="clients">
+      <div class="metrics">
+        <article><span>Client files</span><strong>128</strong></article>
+        <article><span>Open matters</span><strong>42</strong></article>
+        <article><span>Communications logged</span><strong>314</strong></article>
+        <article><span>Documents stored</span><strong>267</strong></article>
+      </div>
+      <div class="client-portal">
+        <section class="panel client-list-panel">
+          <div class="mail-list-head">
+            <h2>Client Files</h2>
+            <span>Search by client or matter</span>
+          </div>
+          <div class="client-search">
+            <input type="search" value="succession">
+          </div>
+          <div class="client-list">
+            <button class="client-row active" data-client="amelie">
+              <strong>Amelie Roy</strong>
+              <span>Succession - Estate of Jean Roy</span>
+              <em>Calls, emails, documents, billable time</em>
+            </button>
+            <button class="client-row" data-client="mariana">
+              <strong>Mariana Costa</strong>
+              <span>Real estate purchase</span>
+              <em>WhatsApp, call, secure upload</em>
+            </button>
+            <button class="client-row" data-client="claire">
+              <strong>Claire Bouchard</strong>
+              <span>Testament & Mandate</span>
+              <em>Appointment, checklist, draft notes</em>
+            </button>
+            <button class="client-row" data-client="marc">
+              <strong>Marc Lavoie</strong>
+              <span>Quittance follow-up</span>
+              <em>NotaRad, email, registry status</em>
+            </button>
+          </div>
+        </section>
+
+        <section class="panel client-file-panel">
+          <div class="message-meta">
+            <div>
+              <p class="eyebrow">Client File</p>
+              <h2 id="clientName">Amelie Roy</h2>
+            </div>
+            <span id="clientStatus">Open succession file</span>
+          </div>
+          <dl class="client-facts">
+            <dt>Phone</dt><dd id="clientPhone">514-555-0198</dd>
+            <dt>Email</dt><dd id="clientEmailDetail">amelie.roy@example.com</dd>
+            <dt>Matter</dt><dd id="clientMatter">Succession - Estate of Jean Roy</dd>
+            <dt>Last activity</dt><dd id="clientLastActivity">Outgoing succession call converted to email</dd>
+          </dl>
+          <div class="client-file-grid">
+            <section>
+              <h2>Activity</h2>
+              <ul class="timeline" id="clientActivity">
+                <li><b>Jun 10</b> Outgoing succession call logged and transcribed</li>
+                <li><b>Jun 10</b> Follow-up email draft created</li>
+                <li><b>Jun 9</b> Death certificate request added</li>
+              </ul>
+            </section>
+            <section>
+              <h2>Stored Information</h2>
+              <div class="checklist" id="clientStoredInfo">
+                <label><input type="checkbox" checked> Contact details</label>
+                <label><input type="checkbox" checked> Call transcripts</label>
+                <label><input type="checkbox" checked> Email drafts</label>
+                <label><input type="checkbox"> Death certificate</label>
+              </div>
+            </section>
+          </div>
+          <section class="client-documents">
+            <h2>Documents & Billing</h2>
+            <table>
+              <thead>
+                <tr><th>Item</th><th>Type</th><th>Status</th><th>Linked Module</th></tr>
+              </thead>
+              <tbody id="clientRecords">
+                <tr><td>Succession follow-up call</td><td>Billable time</td><td>0.50 h</td><td>NotaVoix</td></tr>
+                <tr><td>Succession checklist</td><td>Email draft</td><td>Ready</td><td>NotaMail</td></tr>
+                <tr><td>Estate intake</td><td>Document request</td><td>Pending client</td><td>Client Portal</td></tr>
+              </tbody>
+            </table>
+          </section>
         </section>
       </div>
     </section>
@@ -189,6 +280,26 @@
       </div>
 
       <div class="grid two">
+        <section class="panel">
+          <h2>Succession Billable by Client</h2>
+          <div class="billable-list">
+            <button class="billable-row active" data-call="succession">
+              <strong>Amelie Roy</strong>
+              <span>Estate of Jean Roy</span>
+              <em>18 min - billed 0.50 h</em>
+            </button>
+            <button class="billable-row" data-call="successionSofia">
+              <strong>Sofia Pereira</strong>
+              <span>Estate of Maria Pereira</span>
+              <em>34 min - billed 0.75 h</em>
+            </button>
+            <button class="billable-row" data-call="successionEstate">
+              <strong>Estate of Laurent Blais</strong>
+              <span>Liquidator follow-up</span>
+              <em>22 min - billed 0.50 h</em>
+            </button>
+          </div>
+        </section>
         <section class="panel">
           <h2>Client Contacts</h2>
           <table class="contacts-table">

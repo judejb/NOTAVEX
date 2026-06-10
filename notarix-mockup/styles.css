@@ -276,6 +276,13 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.client-portal {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
 .mailbox.full {
   grid-template-columns: 190px 280px minmax(0, 1fr);
   align-items: start;
@@ -383,6 +390,85 @@ h2 {
   background: #f8fafc;
   color: var(--ink);
   text-align: left;
+}
+
+.client-list,
+.billable-list {
+  display: grid;
+  gap: 10px;
+}
+
+.client-search {
+  margin-bottom: 12px;
+}
+
+.client-search input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: white;
+  font: inherit;
+  padding: 11px 12px;
+}
+
+.client-row,
+.billable-row {
+  width: 100%;
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-left: 4px solid #94a3b8;
+  background: #f8fafc;
+  color: var(--ink);
+  text-align: left;
+}
+
+.client-row.active,
+.billable-row.active {
+  border-color: #99d5ce;
+  border-left-color: var(--accent);
+  background: #e9fbf8;
+}
+
+.client-row strong,
+.client-row span,
+.client-row em,
+.billable-row strong,
+.billable-row span,
+.billable-row em {
+  display: block;
+}
+
+.client-row span,
+.client-row em,
+.billable-row span,
+.billable-row em {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.client-row em,
+.billable-row em {
+  color: var(--accent-dark);
+  font-style: normal;
+  font-weight: 800;
+}
+
+.client-facts {
+  grid-template-columns: 110px 1fr;
+  margin-bottom: 16px;
+}
+
+.client-file-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.client-documents {
+  margin-top: 6px;
 }
 
 .call-row.active {
@@ -978,6 +1064,8 @@ th {
   .mailbox,
   .mailbox.full,
   .calendar-shell,
+  .client-portal,
+  .client-file-grid,
   .voice-layout,
   .call-layout,
   .steps,
