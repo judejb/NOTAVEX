@@ -51,7 +51,7 @@
     </div>
     <nav>
       <button class="nav active" data-view="office">NotaOffice</button>
-      <button class="nav" data-view="clients">Client Portal</button>
+      <button class="nav" data-view="clients">Client Files</button>
       <button class="nav nav-parent" id="toggleCommunicate" type="button" aria-expanded="true">Notavex Communicate</button>
       <div class="nav-group" id="communicateGroup">
         <button class="nav nav-child" data-view="voix">NotaVoix</button>
@@ -121,28 +121,40 @@
         <section class="panel client-list-panel">
           <div class="mail-list-head">
             <h2>Client Files</h2>
-            <span>Search by client or matter</span>
+            <span>Filter by status and search by name</span>
           </div>
-          <div class="client-search">
-            <input type="search" value="succession">
+          <div class="client-filters">
+            <label>
+              Name
+              <input id="clientNameSearch" type="search" placeholder="Search client name">
+            </label>
+            <label>
+              Status
+              <select id="clientStatusFilter">
+                <option value="all">All statuses</option>
+                <option value="open">Open</option>
+                <option value="scheduled">Scheduled</option>
+                <option value="follow-up">Follow-up</option>
+              </select>
+            </label>
           </div>
           <div class="client-list">
-            <button class="client-row active" data-client="amelie">
+            <button class="client-row active" data-client="amelie" data-status="open">
               <strong>Amelie Roy</strong>
               <span>Succession - Estate of Jean Roy</span>
               <em>Calls, emails, documents, billable time</em>
             </button>
-            <button class="client-row" data-client="mariana">
+            <button class="client-row" data-client="mariana" data-status="open">
               <strong>Mariana Costa</strong>
               <span>Real estate purchase</span>
               <em>WhatsApp, call, secure upload</em>
             </button>
-            <button class="client-row" data-client="claire">
+            <button class="client-row" data-client="claire" data-status="scheduled">
               <strong>Claire Bouchard</strong>
               <span>Testament & Mandate</span>
               <em>Appointment, checklist, draft notes</em>
             </button>
-            <button class="client-row" data-client="marc">
+            <button class="client-row" data-client="marc" data-status="follow-up">
               <strong>Marc Lavoie</strong>
               <span>Quittance follow-up</span>
               <em>NotaRad, email, registry status</em>
@@ -192,7 +204,7 @@
               <tbody id="clientRecords">
                 <tr><td>Succession follow-up call</td><td>Billable time</td><td>0.50 h</td><td>NotaVoix</td></tr>
                 <tr><td>Succession checklist</td><td>Email draft</td><td>Ready</td><td>NotaMail</td></tr>
-                <tr><td>Estate intake</td><td>Document request</td><td>Pending client</td><td>Client Portal</td></tr>
+                <tr><td>Estate intake</td><td>Document request</td><td>Pending client</td><td>Client Files</td></tr>
               </tbody>
             </table>
           </section>

@@ -398,11 +398,23 @@ h2 {
   gap: 10px;
 }
 
-.client-search {
+.client-filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
   margin-bottom: 12px;
 }
 
-.client-search input {
+.client-filters label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.client-filters input,
+.client-filters select {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;

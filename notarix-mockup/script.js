@@ -227,7 +227,7 @@ const clientFiles = {
     records: [
       ["Succession follow-up call", "Billable time", "0.50 h", "NotaVoix"],
       ["Succession checklist", "Email draft", "Ready", "NotaMail"],
-      ["Estate intake", "Document request", "Pending client", "Client Portal"]
+      ["Estate intake", "Document request", "Pending client", "Client Files"]
     ]
   },
   mariana: {
@@ -246,7 +246,7 @@ const clientFiles = {
     records: [
       ["International intake", "Call transcript", "Logged", "NotaVoix"],
       ["Secure upload instructions", "Email draft", "Ready", "NotaMail"],
-      ["Purchase intake", "Matter file", "Open", "Client Portal"]
+      ["Purchase intake", "Matter file", "Open", "Client Files"]
     ]
   },
   claire: {
@@ -313,6 +313,22 @@ document.querySelectorAll(".client-row").forEach((button) => {
       .join("");
   });
 });
+
+function applyClientFilters() {
+  const nameQuery = document.getElementById("clientNameSearch").value.trim().toLowerCase();
+  const status = document.getElementById("clientStatusFilter").value;
+
+  document.querySelectorAll(".client-row").forEach((row) => {
+    const name = row.querySelector("strong").textContent.toLowerCase();
+    const matchesName = !nameQuery || name.includes(nameQuery);
+    const matchesStatus = status === "all" || row.dataset.status === status;
+
+    row.hidden = !(matchesName && matchesStatus);
+  });
+}
+
+document.getElementById("clientNameSearch").addEventListener("input", applyClientFilters);
+document.getElementById("clientStatusFilter").addEventListener("change", applyClientFilters);
 
 const emailDrafts = {
   appointment: {
